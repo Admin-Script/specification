@@ -13,7 +13,7 @@
     <a href="https://github.com/Admin-Script">
         Home
     </a> |
-    <a href="https://admin-script.github.io">
+    <a href="https://admin-script.github.io/specification">
         Site
     </a>
 </p>
