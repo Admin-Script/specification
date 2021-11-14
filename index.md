@@ -1,0 +1,3 @@
+# adminScript Specification
+
+##
