@@ -1,2 +1,5 @@
 theme: jekyll-theme-slate
 title: adminScript Specification
+
+github:
+  is_project_page: false

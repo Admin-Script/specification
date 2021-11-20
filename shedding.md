@@ -1,6 +1,7 @@
-# About
-
-This document contains specification or stubs for undecided ideas which may be added soon
+---
+title: adminScript Shedding
+description: This document contains specification or stubs for undecided ideas which may be added soon
+---
 
 ## 1 Assignment Operators
 

@@ -1,0 +1,7 @@
+{% include head-custom-google-analytics.html %}
+
+{% assign head_title = page.head_title | default: page.title | default: site.title | default: false %}
+
+{% if head_title %}
+    <title>{{ head_title }}</title>
+{% endif %}
