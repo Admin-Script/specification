@@ -97,71 +97,28 @@ If statment returns an array then the array is passed as is to `statement2`
 
 ### 4.4.7 Unrary Substraction (Additive Inverse) Operator
 
-## 4.5 Bitwise Operators
+## 4.5 Logical Operators
 
-### 4.5.1 Bitwise Negation Operator
-
-### 4.5.2 Bitwise Or Operator
-
-### 4.5.3 Bitwise And Operator
-
-### 4.5.4 Bitwise XOR Operator
-
-### 4.5.5 Bitwise Left Shit Operator
-
-### 4.5.6 Bitwise Right Shift Operator
-
-## 4.6 Logical Operators
-
-### 4.6.1 Logical And Operator
+### 4.5.1 Logical And Operator
 
 <!-- Second statement is not evaluated if first is false, keyword is "and" -->
 
-### 4.6.2 Logical Or Operator
+### 4.5.2 Logical Or Operator
 
 <!-- Second statement is not evaluated if first is true, keyword is "or" -->
 
-### 4.6.3 Logical Negation Operator
+### 4.5.3 Logical Negation Operator
 
-## 4.7 Assignment Operators
+## 4.6 Relational Operators
 
-### 4.7.1 Assignment
+### 4.6.1 Greater Than
 
-### 4.7.2 Addition Assignment
+### 4.6.2 Lesser Than
 
-### 4.7.3 Substraction Assignment
+### 4.6.3 Equals To
 
-### 4.7.4 Multiplication Assignment
+### 4.6.4 Not Equals To
 
-### 4.7.5 Division Assignment
+### 4.6.5 Greater Than Or Equals To
 
-### 4.7.6 Modulus Assignment
-
-### 4.7.7 Bitwise Or Assignment
-
-### 4.7.8 Bitwise And Assignment
-
-### 4.7.9 Bitwise XOR Assignment
-
-### 4.7.10 Bitwise Left Shift Assignment
-
-### 4.7.11 Bitwise Right Sift Assignment
-
-### 4.7.12 Logical Or Assignment
-
-### 4.7.13 Logical And Assignment
-
-## 4.8 Relational Operators
-
-### 4.8.1 Greater Than
-
-### 4.8.2 Lesser Than
-
-### 4.8.3 Equals To
-
-### 4.8.4 Not Equals To
-
-### 4.8.5 Greater Than Or Equals To
-
-### 4.8.6 Lesser Than Or Equals To
-
+### 4.6.6 Lesser Than Or Equals To
