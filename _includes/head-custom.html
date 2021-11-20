@@ -1,6 +1,7 @@
 {% include head-custom-google-analytics.html %}
 
-{% assign head_title = page.head_title | default: page.title | default: site.title | default: false %}
+<!-- Do not use page.title because it considers 1st heading -->
+{% assign head_title = page.head_title | default: site.title | default: false %}
 
 {% if head_title %}
     <script>

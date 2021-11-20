@@ -1,4 +1,5 @@
 ---
+head_title: adminScript Shedding
 title: adminScript Shedding
 description: This document contains specification or stubs for undecided ideas which may be added soon
 ---
