@@ -1,3 +1,7 @@
+<head>
+    <title>Specification</title>
+</head>
+
 # 1 Introduction
 
 Admin Script's main goal is to be user friendly and create an inutitive way to write commands.
