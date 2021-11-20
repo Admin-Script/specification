@@ -45,15 +45,121 @@ Variables are names in a scope which store certain data, they are dynamic in typ
 A variable cannot be named after any builtin names, also if a developer specifies then
 variables may not also be named after certain developer statements.
 
-A variable declaration is definedn`variable = <value>`
+A variable declarations is simply `variable = <value>`
 
 # 4 Operators
 
-## 4.1 Filter Operator
+## 4.1 Filter
 
 The filter operator `:` (`U+003A`) creates a filter context object which validates values
 the constructed object is a parameter which can stored or passed to a statement, a statment may try
-to parse the filter's underlying condition in order to optimise the execution
+to parse the filter's underlying condition in order to optimise the execution.
 
 The filter operator creates a local scope, in this scope the expression has access to the value being filtered
 and some attributes of the value are available as variables in the scope.
+
+Intuitively the filter operator can be thought of as an inline subroutine which returns boolean values.
+
+`statement check_data : check_data >= 1`
+
+Here the statement receives a filter object and it returns the first pass or all data that passes the filter.
+
+## 4.2 Pipe
+
+The pipe operator `|` (`U+007C`) allows to pass returned values as the last argument to the succeeding statement.
+
+`statement "data" | statement2`
+
+here if `statement` returns an array then `statement2` will be invoked **for each** element
+if a non-array is returned the value is passed as is
+
+## 4.3 Pass
+
+The pass operator `->` (`U+002D U+003E`) is similar to the pipe operator except it passes the entire value as is.
+
+`statement "data" -> statement2`
+
+If statment returns an array then the array is passed as is to `statement2`
+
+## 4.4 Arithmetic Opertors
+
+### 4.4.1 Addition
+
+### 4.4.2 Substraction
+
+### 4.4.3 Multiplication
+
+### 4.4.4 Division
+
+### 4.4.5 Modulus
+
+### 4.4.6 Unrary Addition
+
+### 4.4.7 Unrary Substraction (Additive Inverse)
+
+## 4.5 Bitwise Operators
+
+### 4.5.1 Bitwise Negation
+
+### 4.5.2 Bitwise Or
+
+### 4.5.3 Bitwise And
+
+### 4.5.4 Bitwise XOR
+
+### 4.5.5 Bitwise Left Shit
+
+### 4.5.6 Bitwise Right Shift
+
+## 4.6 Logical Operators
+
+### 4.6.1 Logical And
+
+<!-- Second statement is not evaluated if first is false, keyword is "and" -->
+
+### 4.6.2 Logical Or
+
+<!-- Second statement is not evaluated if first is true, keyword is "or" -->
+
+### 4.6.3 Logical Negation
+
+## 4.7 Assignment Operators
+
+### 4.7.1 Addition Assignment
+
+### 4.7.2 Substraction Assignment
+
+### 4.7.3 Multiplication Assignment
+
+### 4.7.4 Division Assignment
+
+### 4.7.5 Modulus Assignment
+
+### 4.7.6 Bitwise Or Assignment
+
+### 4.7.7 Bitwise And Assignment
+
+### 4.7.8 Bitwise XOR Assignment
+
+### 4.7.9 Bitwise Left Shift Assignment
+
+### 4.7.10 Bitwise Right Sift Assignment
+
+### 4.7.11 Logical Or Assignment
+
+### 4.7.12 Logical And Assignment
+
+## 4.8 Relational Operators
+
+### 4.8.1 Greater Than
+
+### 4.8.2 Lesser Than
+
+### 4.8.3 Equals To
+
+### 4.8.4 Not Equals To
+
+### 4.8.5 Greater Than Or Equals To
+
+### 4.8.6 Lesser Than Or Equals To
+
