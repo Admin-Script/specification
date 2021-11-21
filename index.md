@@ -85,40 +85,170 @@ If statment returns an array then the array is passed as is to `statement2`
 
 ### 4.4.1 Addition Operator
 
+`+` - Adds two numbers
+
+`a + b`
+
 ### 4.4.2 Substraction Operator
+
+`-` - Substracts two numbers
+
+`a - b`
 
 ### 4.4.3 Multiplication Operator
 
+`*` - Multiply two numbers
+
+`a * b`
+
 ### 4.4.4 Division Operator
+
+`/` - Divide two numbers.
+
+`a / b`
 
 ### 4.4.5 Modulus Operator
 
+`%` - Retrun remainder of division of left operand and right operand
+
+`a % b`
+
 ### 4.4.6 Unrary Addition Operator
 
+`+[a]` - Return the number as is.
+
+`+9`
+
 ### 4.4.7 Unrary Substraction (Additive Inverse) Operator
+
+`-[a]` - Return the additive inverse of a number
+
+`-9`
 
 ## 4.5 Logical Operators
 
 ### 4.5.1 Logical And Operator
 
+`&&` - Return the second truthy value, if both operands truthy, else return the falsy operand.
+If both falsy then return second. Doesn't evaluate second statement if first is falsy.
+
+`a && b`
+
 <!-- Second statement is not evaluated if first is false, keyword is "and" -->
 
 ### 4.5.2 Logical Or Operator
+
+`||` - Return the first truthy operand if any, else return the second falsy operand.
+
+`a || b`
 
 <!-- Second statement is not evaluated if first is true, keyword is "or" -->
 
 ### 4.5.3 Logical Negation Operator
 
+`![a]` - Negate the operands truthiness. This is not a bitwise negation.
+
+`!a`
+
 ## 4.6 Relational Operators
 
 ### 4.6.1 Greater Than
 
+`>` - Check if left operand greater.
+
+`a > b`
+
 ### 4.6.2 Lesser Than
+
+`<` - Check if right operand greater.
+
+`a < b`
 
 ### 4.6.3 Equals To
 
+`==` - Check if both operand equal.
+
+`a == b`
+
 ### 4.6.4 Not Equals To
+
+`!=` - Check if both operand inequal.
 
 ### 4.6.5 Greater Than Or Equals To
 
+`>=` - Check if left operand greater or equal to right operand.
+
+`a >= b`
+
 ### 4.6.6 Lesser Than Or Equals To
+
+`<=` - Check if right operand greater or equal to left operand.
+
+`a <= b`
+
+## 4.7 Assignment Operator
+
+`=` - Assign a name in the scope to a value
+
+`a = 9` `name = <literal>`
+
+# 5 Types
+
+## 5.1 Integer
+
+`int` - bit-width is either 32 or 64 depending on platform, signed. bit width may not be folllowed if implemented
+platform allows indefinite width.
+
+`+0` and `-0` evaluate as equal.
+
+Example - `a = -123`
+
+## 5.2 Float
+
+The type is named `float`
+
+IEEE 754, bit-width is maximum precision given by platform.
+
+`+0.0` and `-0.0` evaluate equal
+
+`+inf` and `-inf` evaluate distinct
+
+`NaN` and all other values evaluate distinct.
+
+Example - `a = 0.0` `a = -2.567`
+
+## 5.3 String
+
+The type is named `string`
+
+An array of characters, this type is immutable.
+
+Example - `a = 'string'` `a = "foo"`
+
+## 5.4 Array
+
+The type is named `array`
+
+An array of multiple objects, this is mutable
+
+Example - `[1,2,3]`
+
+## 5.5 Time
+
+A time type, comparable with timestamps which are strings, integers, floats. Timestamps start
+from unix echo.
+
+can be constructed by `time(1924972200)` using a unix timestamp ()
+or by `time("2000-01-01")` where the stamp is iso 8071 compatible and is matched by
+the regex
+`\d{4}-[01]\d-[0-3]\d(?:[^zZ][0-2]\d(?::[0-5]\d(?::[0-6]\d(?:\.\d{3}(?:\d{3})?)?)?)?)?(?:[zZ]|[+-][0-2]\d:[0-5]\d(?::[0-5]\d(?:\.\d{6})?)?)?`
+
+or to simplify the accepted string time is
+`YYYY-MM-DD[(any character not 'z' or 'Z')HH[:MM[:SS[.fff[fff]]]]]['z' or 'Z' or (('+' or '-')HH:MM[:SS[.ffffff]])]`
+where `[...]` represents an optional match.
+
+For **implementors** who wish to use regex for matching and are willing to handle post-validation
+themselves the following basic regex can be used
+`(\d{4})-(\d{2})-(\d{2})(?:[^zZ](\d{2})(?::(\d{2})(?::(\d{2})(?:\.(\d{3})(?:(\d{3}))?)?)?)?)?(?:([zZ])|([+-])(\d{2}):(\d{2})(?::(\d{2})(?:\.(\d{6}))?)?)?`
+The above regex matches 14 groups
+The above regex does not validate the string, hence implementors should handle nuances related to iso 8071 like leap seconds.
