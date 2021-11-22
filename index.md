@@ -139,6 +139,7 @@ If both falsy then return second. Doesn't evaluate second statement if first is 
 ### 4.5.2 Logical Or Operator
 
 `||` - Return the first truthy operand if any, else return the second falsy operand.
+Doesn't evaluate second statement if first is true.
 
 `a || b`
 
@@ -201,6 +202,9 @@ platform allows indefinite width.
 
 `+0` and `-0` evaluate as equal.
 
+Operations supported
+- All operations
+
 Example - `a = -123`
 
 ## 5.2 Float
@@ -215,6 +219,9 @@ IEEE 754, bit-width is maximum precision given by platform.
 
 `NaN` and all other values evaluate distinct.
 
+Operations supported
+- All operations
+
 Example - `a = 0.0` `a = -2.567`
 
 ## 5.3 String
@@ -223,13 +230,29 @@ The type is named `string`
 
 An array of characters, this type is immutable.
 
+Operations supported
+- `+`
+  Concatenate strings
+- All relational
+  Compared the code point of characters
+
 Example - `a = 'string'` `a = "foo"`
 
 ## 5.4 Array
 
 The type is named `array`
 
-An array of multiple objects, this is mutable
+An array of multiple objects, this is mutable.
+
+Operations supported
+- `+`
+  Make a new array with elements from both)
+- `==`
+  Check equal
+- `!=`
+  Check inequal
+
+Truthiness - `false` if array has 0 elements.
 
 Example - `[1,2,3]`
 
@@ -252,3 +275,61 @@ themselves the following basic regex can be used
 `(\d{4})-(\d{2})-(\d{2})(?:[^zZ](\d{2})(?::(\d{2})(?::(\d{2})(?:\.(\d{3})(?:(\d{3}))?)?)?)?)?(?:([zZ])|([+-])(\d{2}):(\d{2})(?::(\d{2})(?:\.(\d{6}))?)?)?`
 The above regex matches 14 groups
 The above regex does not validate the string, hence implementors should handle nuances related to iso 8071 like leap seconds.
+
+Operations supported
+- All relational
+
+## 5.6 Boolean
+
+This type is named `bool`
+
+This is a bistated datatype.
+Recommended bitwidth is 1 byte.
+
+Supported operation
+- All arithmetic such that `true` = `1` & `false` = 0
+- All relational
+
+Constructor
+- `bool(a)`
+  Equivalent to `!(!a)`
+
+# 6 Operator Implementation Details
+
+Since Admin Script is extensible this section describes the API to define operator behavior for custom types.
+
+*This section assumes that the underlying language has a way to bind the type and functions which will be used as it's operator.
+Simplest way to do this is to implement the type as a class in modern languages. Hence operator functions will be referred to as
+"methods" but it actually just refer to functions bound to the custom type.*
+
+## Definations for Section 6
+- `Unsupported` - A value which can be returned by operator method to indicate that performed operation is not supported by type.
+  This also refers to alternative method of signaling that an operation is unsupported.
+
+## Operator Model For Custom Types
+
+If an operator is supported by an type then it must have a "method" for executing the operation.
+This method should return or signal `Unsupported` if the specified operation isn't supported.
+It may also raise a error which should be properly chained ad raised higher for handling by application.
+
+In which case the right operand's right hand side operator variant method should be invoked,
+that is to illustrate, in `a + b`
+first, `a.add(b)` is invoked. if it returns/signals `Unsupported` then
+`b.radd(a)` is invoked. if it also does not support the operation then an error is raised to be handled by app.
+
+## Special Operator
+
+All logical operators are controlled by the same method which returns the truthiness.
+To illustrate.
+
+`a || b`
+First `a.truthy()` is invoked. if `true` then `a` is returned
+else `b` is returned.
+
+## Conventions
+
+- Custom types **cannot** change the behavior for unrary operators.
+
+- In an operator method.
+  If the type does not support an operation with the other operand then the operator method should return `Unsupported` or signal the same.
+  If the type strictly does not support an with other operand then it should raise an error
