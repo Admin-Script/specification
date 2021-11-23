@@ -118,13 +118,13 @@ If the statement returns an array then it is passed as is to `statement2`
 
 ### 4.4.6 Unrary Addition Operator
 
-`+[a]` - Return the number as is.
+`+a` - Return the number as is.
 
 `+9`
 
 ### 4.4.7 Unrary Substraction (Additive Inverse) Operator
 
-`-[a]` - Return the additive inverse of a number
+`-a` - Return the additive inverse of a number
 
 `-9`
 
@@ -146,9 +146,9 @@ Do not evaluate the second statement if the first is true.
 
 ### 4.5.3 Logical Negation Operator
 
-`![a]` - Negate the operands truthiness. It is not a bit-wise negation.
+`!a` - Negate the operands truthiness. It is not a bit-wise negation.
 
-`!a`
+`!true`
 
 ## 4.6 Relational Operators
 
@@ -415,3 +415,17 @@ Currently there are no standardised builtin statements, implementations are free
 - Infinetly nested paranthesis are reduced to one pair.
 - Can be used to pass return value of statements rather than raising syntax error
     `a (b "arg")` is accepted while `a b "arg"` is not
+
+# 11 Constants
+
+## 11.1 true
+
+`true` the high state of the `bool` data-type
+
+## 11.2 false
+
+`false` the low state of the `bool` data-type
+
+## 11.3 NaN
+
+`NaN`, a special value of `float` indicating invalid float data
