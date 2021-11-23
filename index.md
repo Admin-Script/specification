@@ -34,9 +34,9 @@ The null character (`U+0000`) is not accepted and should be replaced with the re
 A statement is a functional keyword in AdminScript.
 
 Certain statements may be built-in, these statements are included in this spec and must be implemented
-in AdminScript implementations. 
+in AdminScript implementations.
 
-On the other hand, since AdminScript is extensible, a developer may add statements 
+On the other hand, since AdminScript is extensible, a developer may add statements
 to the language, to differentiate between these two, the added statements  will be called "developer statement(s)"
 
 A statement is invoked by `statement [ARGS]`
@@ -198,6 +198,8 @@ Do not evaluate the second statement if the first is true.
 
 None of the builtin types have no attributes hence this is only applicable for custom types.
 See `7.1` for more details.
+
+## 4.9 Inline Error handling
 
 # 5 Types
 
@@ -407,3 +409,9 @@ it is better to be redundant for security.
 # 9 Builtin Statements
 
 Currently there are no standardised builtin statements, implementations are free to add any they prefer.
+
+# 10 Paranthesis
+
+- Infinetly nested paranthesis are reduced to one pair.
+- Can be used to pass return value of statements rather than raising syntax error
+    `a (b "arg")` is accepted while `a b "arg"` is not
