@@ -1,14 +1,14 @@
 # 1 Introduction
 
-AdminScript's main goal is to be user-friendly and create an intuitive way to write commands.
+The main goal for AdminScript is to be user-friendly and create an intuitive way to write commands.
 This document standardizes AdminScript syntax, operators, types, and other functionality for
 developer and user reference.
 
 ## 1.1 What is AdminScript?
 
 AdminScript is a scripting language targetting command interfaces that need to remain simple
-while providing powerful ways for interaction. AdminScript targets apps interacting via
-a primitive command interface, which allows the user to shorten invocation string length and use the
+while providing powerful ways for interaction. AdminScript targets
+primitive command interfaces, which allows the user to shorten invocation string length and use the
 app with greater efficacy.
 
 # 2 Terms and definitions
@@ -25,7 +25,7 @@ of the names can begin with a digit. The regex to match names is `[A-Za-z_][0-9A
 Lines are valid AdminScript statements. An accepted line ending is, a new line character (LF: `U+000A`),
 a carriage return (CR: `U+000D`), and a carriage return followed by a newline character (CR+LF: `U+000A U+000D`)
 
-The null character (`U+0000`) is not accepted and should be replaced with the replacement character (`U+FFFD`)
+The null character (`U+0000`) is not accepted and should be substituted by the replacement character (`U+FFFD`)
 
 # 3 Syntax
 
@@ -196,7 +196,7 @@ Do not evaluate the second statement if the first is true.
 
 `.` - Return the attribute of a value.
 
-None of the builtin types have no attributes hence this is only applicable for custom types.
+None of the built-in types have any attributes hence this is only applicable for custom types.
 See `7.1` for more details.
 
 ## 4.9 Inline Error handling
@@ -309,7 +309,7 @@ Constructor
 
 ## 6.1 Attributes
 
-All access of attributes of the type will be done via a method specifed by the implementation.
+All, access of attributes of the type will be done via a method specified by the implementation.
 The signature for the method includes the attribute as a string.
 
 The type should return AdminScript compatible types from the dot access operator or the implementation may cast them.
@@ -317,12 +317,12 @@ The type should return AdminScript compatible types from the dot access operator
 ## 6.2 Methods
 
 Methods can be returned as functions from the dot attribute access operator method
-that is `a.b()` is evaluated as `a.get_attribute("b")()`, methods receive no special treatement
+that is `a.b()` is evaluated as `a.get_attribute("b")()`, methods receive no special treatment
 and are treated as attributes.
 
 ## 6.3 Restrictions
 
-Attribute access on a type which is not an AdminScript compatible type is restricted, that is
+Attribute access on a type that is not an AdminScript compatible type is restricted, that is
 the type must have a dot operator method and must be a registered type.
 
 For example, In a python engine without attribute access regulation
@@ -334,15 +334,15 @@ import = builtins.__getitem__("__import__")
 This input will give access to every module in python.
 
 The point of a dot operator method is to allow AdminScript compatible types,
-which would avoid the security issue altogather since with only type regulation (checking if a type is registered)
+which would avoid the security issue altogether since with only type regulation (checking if a type is registered)
 there remains a possibility of escaping.
 
-With an explicit dot operator method in every custom type and type regulation it would not have been possible
+With an explicit dot operator method in every custom type and type regulation, it would not have been possible
 to execute `builtins = func.__builtins__` since the function is not a registered type and nor did it have an explicit dot access operator.
 
 ## Custom Types as Namespaces
 
-Custom types when stripped of all operators except dot, act as a simple namespaces which can be used
+Custom types when stripped of all operators except dot, act as a simple namespace that can be used
 as modules.
 
 # 7 Operator Implementation Details
@@ -353,7 +353,7 @@ Since Admin Script is extensible this section describes the API to define operat
 The simplest way to do this is to implement the type as a class in modern languages. Hence operator functions will be referred to as
 "methods" but it just refers to functions bound to the custom type.*
 
-## Definations for Section 7
+## Definitions for Section 7
 - `Unsupported` - A value that can be returned by the operator method to indicate that performed operation is not supported with the other type.
   This also refers to the alternative method of signaling that an operation is unsupported, such as using a special unsupported exception.
 
@@ -379,7 +379,7 @@ if `true` then `a` is returned else `b` is returned.
 
 ## 7.1 Dot Attribute Access Operator
 
-The Dot attribute access operator has a dedicated methods which returns the specified operator,
+The Dot attribute access operator has a dedicated method that returns the specified operator,
 to illustrate `a.b` is ran as `a.get_attrbute("b")` the name of the method is left to the the implementation
 and `a.b = ...` is prohibited.
 
@@ -393,27 +393,27 @@ and `a.b = ...` is prohibited.
 
 # 8 External Functions
 
-AdminScript provides no way to define subroutines itself, however it allows functions from the underlying language
+AdminScript provides no way to define subroutines itself however, it allows functions from the underlying language
 to be interacted with directly. There is one limitation that the functions can only be called with positional arguments.
 
-Functions are added to the engine when a name is reserved for a native function, a type with methods is added.
-Functions can be called directly with the AdminScript types or arguments can be converted before call the behaviour depends
-on the implementation where such a problem may not exist if underlying types are reused.
+Functions are added to the engine when a name is reserved for a native function or when a type with methods is added.
+Functions can be called directly with the AdminScript types or arguments can be converted before calling. The behavior depends
+on the implementation.
 
 ## 8.1 Restrictions
 
-All function and methods of custom types must be declared, so that implementations can prevent function calls that are not
-declared and maybe unsafe to execute. While this is redundant if custom types properly implement attribute access, however
+All functions and methods of custom types must be declared so that implementations can prevent function calls that are not
+declared and may be unsafe to execute, while this is redundant if custom types properly implement attribute access, however,
 it is better to be redundant for security.
 
 # 9 Builtin Statements
 
-Currently there are no standardised builtin statements, implementations are free to add any they prefer.
+Currently, there are no standardized built-in statements, implementations are free to add any they prefer.
 
-# 10 Paranthesis
+# 10 Parenthesis
 
-- Infinetly nested paranthesis are reduced to one pair.
-- Can be used to pass return value of statements rather than raising syntax error
+- Infinitely nested parenthesis are reduced to one pair.
+- Can be used to pass the return value of statements rather than raising syntax error
     `a (b "arg")` is accepted while `a b "arg"` is not
 
 # 11 Constants
