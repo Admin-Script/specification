@@ -20,7 +20,7 @@
 
 #
 
-> This is v1 of the specification (proposed)
+> This is v1 of the specification
 
 ## About
 
