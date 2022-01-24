@@ -27,6 +27,6 @@
 Admin script is a simple but powerfull and extensible scripting
 language for command invocation. Admin script is mainly aimed at
 not-a-dev-user facing command line interfaces while being powerful enough
-to more than satisfy a well versed used.
+to more than satisfy a well versed user.
 
 This repository is dedicated to the specificaton of the language.
